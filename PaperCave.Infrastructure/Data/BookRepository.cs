@@ -1,21 +1,35 @@
-﻿using PaperCave.Models;
+﻿using Microsoft.Azure.Cosmos;
+using Microsoft.Extensions.Options;
+using PaperCave.Infrastructure.Clients;
+using PaperCave.Infrastructure.Query;
+using PaperCave.Infrastructure.Utils;
+using PaperCave.Models;
+using PaperCave.Models.Settings;
 
 namespace PaperCave.Infrastructure.Data;
 
-public class BookRepository : IBookRepository
+public class BookRepository(ICosmosClientBuilder cosmosBuilder, 
+    FeedIteratorUtil feedIteratorUtil, 
+    IOptions<CosmosSettings> settings) : IBookRepository
 {
-    public Task<IEnumerable<BookModel>> GetBookByName(string name)
+    public async Task<IEnumerable<BookModel>> GetBookByName(string name)
     {
-        throw new NotImplementedException();
+        return await feedIteratorUtil.Fetch<BookModel>(QueryRegister.GetBookByName, "@name", name, "PaperCave", "Books");
     }
 
-    public Task<IEnumerable<BookModel>> GetBookById(string id)
+    public async Task<IEnumerable<BookModel>> GetBooksByAuthor(string authorName)
     {
-        throw new NotImplementedException();
+        return await feedIteratorUtil.Fetch<BookModel>(QueryRegister.GetBooksByAuthor, "@name", authorName, "PaperCave", "Books");
     }
 
-    public Task<IEnumerable<BookModel>> GetBookByAuthor(string authorName)
+    public IEnumerable<BookModel> GetBooks()
     {
-        throw new NotImplementedException();
+        return cosmosBuilder.GetContainer("PaperCave", "Books").GetItemLinqQueryable<BookModel>();
+    }
+
+    public async Task<BookModel> InsertBook(BookModel bookToInsert)
+    {
+        return await cosmosBuilder.GetContainer("PaperCave", "Books").UpsertItemAsync(item: bookToInsert, 
+            partitionKey: new PartitionKey(settings.Value.PartitionKey));
     }
 }

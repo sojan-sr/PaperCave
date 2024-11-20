@@ -10,8 +10,9 @@ public class BookService(IBookRepository bookRepository) : IBookService
         fetchType switch
         {
             FetchType.ByName => await bookRepository.GetBookByName(parameter),
-            FetchType.ById => await bookRepository.GetBookById(parameter),
-            FetchType.ByAuthorName => await bookRepository.GetBookByAuthor(parameter),   
-            _ => throw new ApplicationException("Invalid fetch type")
+            FetchType.ByAuthorName => await bookRepository.GetBooksByAuthor(parameter),   
+            _ => throw new ArgumentException("Invalid fetch type")
         };
+
+    public async Task<BookModel> InsertBook(BookModel book) { return await bookRepository.InsertBook(book); }
 }

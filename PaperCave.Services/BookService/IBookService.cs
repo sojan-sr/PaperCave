@@ -1,4 +1,4 @@
-using PaperCave.Models;
+using PaperCave.Models.Book;
 using PaperCave.Models.Requests.Enums;
 
 namespace PaperCave.Services.BookService;

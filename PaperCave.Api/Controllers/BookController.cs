@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using PaperCave.Models;
+using PaperCave.Models.Book;
 using PaperCave.Models.Requests.Enums;
 using PaperCave.Services.BookService;
 

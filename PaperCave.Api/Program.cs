@@ -12,7 +12,7 @@ builder.Services.Configure<CosmosSettings>(builder.Configuration.GetSection("Cos
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c => { c.EnableAnnotations();});
 builder.Services.AddSingleton<ICosmosClientBuilder, CosmosClientBuilder>();
 builder.Services.AddSingleton<IBookService, BookService>();
 builder.Services.AddSingleton<IBookRepository, BookRepository>();

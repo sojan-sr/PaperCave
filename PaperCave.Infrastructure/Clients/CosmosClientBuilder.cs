@@ -1,5 +1,4 @@
-﻿using Azure.Identity;
-using Microsoft.Azure.Cosmos;
+﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Options;
 using PaperCave.Models.Settings;
 
@@ -13,8 +12,15 @@ namespace PaperCave.Infrastructure.Clients
         {
             if (client is null) 
             {            
-                var credentials = new DefaultAzureCredential();
-                client = new CosmosClient(settings.Value.ConnectionString, credentials);
+                client = new CosmosClient(settings.Value.ConnectionString, 
+                    new CosmosClientOptions
+                    {
+                        ConnectionMode = ConnectionMode.Gateway,
+                        SerializerOptions = new CosmosSerializationOptions
+                        {
+                            PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
+                        }
+                    });
                 return client;
             }
             return client;

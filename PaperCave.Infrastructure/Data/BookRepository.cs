@@ -1,16 +1,15 @@
 ﻿using Microsoft.Azure.Cosmos;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 using PaperCave.Infrastructure.Clients;
 using PaperCave.Infrastructure.Query;
 using PaperCave.Infrastructure.Utils;
-using PaperCave.Models;
-using PaperCave.Models.Settings;
+using PaperCave.Models.Book;
 
 namespace PaperCave.Infrastructure.Data;
 
 public class BookRepository(ICosmosClientBuilder cosmosBuilder, 
-    FeedIteratorUtil feedIteratorUtil, 
-    IOptions<CosmosSettings> settings) : IBookRepository
+    ILogger<BookRepository> logger,
+    FeedIteratorUtil feedIteratorUtil) : IBookRepository
 {
     public async Task<IEnumerable<BookModel>> GetBookByName(string name)
     {
@@ -29,7 +28,15 @@ public class BookRepository(ICosmosClientBuilder cosmosBuilder,
 
     public async Task<BookModel> InsertBook(BookModel bookToInsert)
     {
-        return await cosmosBuilder.GetContainer("PaperCave", "Books").UpsertItemAsync(item: bookToInsert, 
-            partitionKey: new PartitionKey(settings.Value.PartitionKey));
+        try
+        {
+            return await cosmosBuilder.GetContainer("PaperCave", "Books")
+                .CreateItemAsync(item: bookToInsert, partitionKey: new PartitionKey(bookToInsert.Genre));
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Book Repo error: {Error}", ex.Message);
+            return new BookModel();
+        }
     }
 }

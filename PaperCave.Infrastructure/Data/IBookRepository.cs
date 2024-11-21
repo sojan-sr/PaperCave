@@ -1,4 +1,4 @@
-using PaperCave.Models;
+using PaperCave.Models.Book;
 namespace PaperCave.Infrastructure.Data;
 public interface IBookRepository
 {

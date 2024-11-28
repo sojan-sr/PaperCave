@@ -1,17 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperCave.Api", "PaperCave.Api\PaperCave.Api.csproj", "{574C1256-F08F-4AC1-9506-4A2006E85C90}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaperCave.Api", "PaperCave.Api\PaperCave.Api.csproj", "{574C1256-F08F-4AC1-9506-4A2006E85C90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperCave.Services", "PaperCave.Services\PaperCave.Services.csproj", "{04F68F09-9790-4B96-B0B6-D87975AEC183}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaperCave.Services", "PaperCave.Services\PaperCave.Services.csproj", "{04F68F09-9790-4B96-B0B6-D87975AEC183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperCave.Models", "PaperCave.Models\PaperCave.Models.csproj", "{733FAE02-7CAD-42FC-ACF6-7AF9AE1DA3A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaperCave.Models", "PaperCave.Models\PaperCave.Models.csproj", "{733FAE02-7CAD-42FC-ACF6-7AF9AE1DA3A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperCave.Infrastructure", "PaperCave.Infrastructure\PaperCave.Infrastructure.csproj", "{A8ECA7A4-B6A9-462B-9F99-97C3BA5111ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaperCave.Infrastructure", "PaperCave.Infrastructure\PaperCave.Infrastructure.csproj", "{A8ECA7A4-B6A9-462B-9F99-97C3BA5111ED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{81163179-EA76-474A-8839-38F63DEA02CF}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
 	EndProjectSection
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "PaperCave.Ui", "PaperCave.Ui\PaperCave.Ui.esproj", "{BB0F6180-F178-4235-BCF3-A9515298A7F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperCave.BulkInsert.Fn", "PaperCave.BulkInsert.Fn\PaperCave.BulkInsert.Fn.csproj", "{0E4F3472-CBCC-4F05-9378-D9AFB2B54449}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,5 +42,21 @@ Global
 		{A8ECA7A4-B6A9-462B-9F99-97C3BA5111ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8ECA7A4-B6A9-462B-9F99-97C3BA5111ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8ECA7A4-B6A9-462B-9F99-97C3BA5111ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0F6180-F178-4235-BCF3-A9515298A7F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0F6180-F178-4235-BCF3-A9515298A7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0F6180-F178-4235-BCF3-A9515298A7F0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BB0F6180-F178-4235-BCF3-A9515298A7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0F6180-F178-4235-BCF3-A9515298A7F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0F6180-F178-4235-BCF3-A9515298A7F0}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0E4F3472-CBCC-4F05-9378-D9AFB2B54449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E4F3472-CBCC-4F05-9378-D9AFB2B54449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E4F3472-CBCC-4F05-9378-D9AFB2B54449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E4F3472-CBCC-4F05-9378-D9AFB2B54449}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EB668D8-1A0E-456F-B7CE-DC41FC4898E4}
 	EndGlobalSection
 EndGlobal

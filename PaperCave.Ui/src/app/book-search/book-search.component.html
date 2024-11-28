@@ -1,0 +1,13 @@
+<p>Enter the name of the book you want to search: </p>
+<div class="searchForm">
+    <input class="inputBox" type="text"/>
+    <button (click)="this.searchBookByName('Goodnight Tokyo')" >Search</button>
+</div>
+
+<div class="searchResult">
+    <h2>Search Results</h2>
+    <h4>Name of the book: {{this.book.title}}</h4>
+    <h4>Name of the author: {{this.book.authorName}}</h4>
+    <h4>Genre of the book: {{this.book.genre}}</h4>
+    <h4>Page count of the book: {{this.book.pageCount}}</h4>
+</div>

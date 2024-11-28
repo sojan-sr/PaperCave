@@ -5,3 +5,5 @@ riderModule.iml
 /_ReSharper.Caches/
 /.vs
 /PaperCave.Api/PaperCave.Api.csproj.user
+/PaperCave.Ui/.vscode
+/PaperCave.BulkInsert.Fn/Properties
